@@ -45,3 +45,6 @@ Algorithm:
     Final complexity : O(N / T * R * D + N / T * R * log(K)) = O(N / T * R * (D + log(K)))
 
 
+What if the lines pass from the 0,0 point but the points are not in the origin?
+1. You can scale the data to the origin.
+2. You can add a bias to the hash function. Ax + By + C = 0 (Before it was Ax + By = 0) (2Dim example)
