@@ -1,0 +1,11 @@
+Compare text - Its not the proper way but a custom way.
+
+Imagine you have 3 sentences:
+Cats think pizza is a toy
+My cat steals my pizza slice
+My dog thinks is a cat.
+
+Method 1: K-shingling
+Create a set of k-shingles for each sentence.
+Peform jaccard_similarity between the sentences.
+
