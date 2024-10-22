@@ -1,0 +1,47 @@
+LSH random projections
+--------------------------------
+Notes:
+K - Number of neighbours 
+D - Dimensionality of data
+N - Number of points
+T - Number of lines
+R - Number of trees
+
+Algorithm:
+--------------------------------
+1. Draw hyperplanes O(D*T*R)
+2. Compute hash values O(N*D*T*R)
+3. Create hash buckets O(R* N) 
+    # Pseudocode:
+    ----------------
+    For tree in trees:
+        For object in objects:
+            tree[hash_value] = object
+
+4. Compute hash for query O(D*T*R)
+    # Notes:
+    -----------------
+    To compute the side the point is on the hyperplane:
+    compute the dot product of the point and the hyperplane
+    if the dot product is greater than 0, the point is on the positive side of the hyperplane
+    otherwise, the point is on the negative side of the hyperplane
+    The complexity of this operation is O(D) for a single hyperplane.
+
+5. Retrieve candidates from buckets O(T * T * R)
+    # Pseudocode:
+    Hamming_distance: Defined as the number of positions at which the corresponding bits are different.
+    hash_1(query) = (x1,x2,..., x_T).
+    ----------------------------
+    If we have T lines that meet on a central point then then number of buckets is O(T).
+    D is the dimensionality of the data in the original space.
+    T is the dimensionality of the hash space.
+    But how many points are in the hash bucket?
+
+
+6. Compute exhaustively something among the retrieved candidates e.g KNN 
+    Average points per bucket O(N / T * R)
+    Average complexity of KNN O(N (objects) * D (dimensions) + N(objects) * log(K))
+    So N = N / T * R:
+    Final complexity : O(N / T * R * D + N / T * R * log(K)) = O(N / T * R * (D + log(K)))
+
+
